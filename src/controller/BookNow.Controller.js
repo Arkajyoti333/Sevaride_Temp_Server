@@ -21,10 +21,16 @@ const BookNowData = async (req, res, next) => {
             rate:rate
         });
 
-        res.json({
-            id:newBookNowData._id,
+        res.status(201).json({
+            message: "Booking created successfully",
+            booking: {
+                id: newBookNowData._id,
+                pickUpLocation: newBookNowData.pickUpLocation,
+                dropOffLocation: newBookNowData.dropOffLocation,
+                distance: newBookNowData.distance,
+                rate: newBookNowData.rate
+            }
         });
-
     } catch (error) {
         const err = createHttpError(500, "Error occurred when registering Book Now data");
         return next(err);

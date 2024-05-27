@@ -1,15 +1,13 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import Envconfig from "./config/config.js";
-import createHttpError from "http-errors";
-import globalErrorHandler from "./middlewers/globalErrorHandler.js";
-
 import dotenv from "dotenv";
-import BookNowData from "./controller/BookNow.Controller.js";
-dotenv.config({ path: "./.env" });
+// import createHttpError from "http-errors";
+import Envconfig from "./config/config.js";
+import globalErrorHandler from "./middlewers/globalErrorHandler.js";
+import BookNowRouter from "./routes/BookNow/Booknow.route.js";
 
-// console.log(process.env);
+dotenv.config({ path: "./.env" });
 
 const app = express();
 
@@ -32,21 +30,18 @@ app.use(cookieParser());
 
 app.use(express.static("public"));
 
-app.get("/", (req, res) => {
+app.use("/api/bookNow", BookNowRouter); //Register  BookNow data post route
+
+
+
+app.get("/",(req,res)=>{
   res.json({
-    message: "This is Home Route",
-  });
-
-  const error = createHttpError(400, "Something went to wrong");
-  throw error;
-});
-
-app.post("/bookNow",BookNowData);
+    message:"this is home route",
+  })
+})
 
 
-
-// Global error handeler
-
+// Global error handler
 app.use(globalErrorHandler);
 
 export default app;
