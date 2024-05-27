@@ -6,7 +6,7 @@ import createHttpError from "http-errors";
 import globalErrorHandler from "./middlewers/globalErrorHandler.js";
 
 import dotenv from "dotenv";
-import BookNowData from "./routes/BookNow/Booknow.route.js";
+import BookNowData from "./controller/BookNow.Controller.js";
 dotenv.config({ path: "./.env" });
 
 // console.log(process.env);

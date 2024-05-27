@@ -10,7 +10,8 @@ const globalErrorHandler = (err, req, res, next) => {
 
     return res.status(statusCode).json({
         Message: err.message || 'Internal Server Error',
-        errorStack: Envconfig.environment === "development" ? err.stack : err.message,
+        errorStack:err.stack,
+        // errorStack: Envconfig.environment === "development" ? err.stack : err.message,
     });
 };
 
