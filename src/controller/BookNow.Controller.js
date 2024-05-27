@@ -22,8 +22,9 @@ const BookNowData = async (req, res, next) => {
         });
 
         res.json({
-            newBookNowData
+            id:newBookNowData._id,
         });
+
     } catch (error) {
         const err = createHttpError(500, "Error occurred when registering Book Now data");
         return next(err);
