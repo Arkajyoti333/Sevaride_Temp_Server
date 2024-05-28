@@ -5,7 +5,7 @@ const BookNowData = async (req, res, next) => {
     const { pickUpLocation, dropOffLocation, distance } = req.body;
 
    
-    console.log(typeof req.body)
+    console.log( req.body)
     console.log(distance);
       
     // Check for missing fields before any database operation
