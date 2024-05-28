@@ -4,13 +4,20 @@ import UserBookNow from "../models/BookNow.model.js";
 const BookNowData = async (req, res, next) => {
     const { pickUpLocation, dropOffLocation, distance } = req.body;
 
+   
+    console.log(typeof req.body)
+    console.log(distance);
+      
     // Check for missing fields before any database operation
     if (!pickUpLocation || !dropOffLocation || !distance) {
         const error = createHttpError(400, "All data are required!");
         return next(error);
     }
+// console.log(pickUpLocation);
+// console.log(dropOffLocation);
+// console.log(distance);
 
-    const rate = distance * 11;
+    const rate = distance * 11||1;
 
     try {
         // Create a new document
